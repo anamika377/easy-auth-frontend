@@ -59,6 +59,7 @@ const SignUp: React.FC = () => {
 
   // Function to handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
+    localStorage.removeItem("loggedOut");
     e.preventDefault();
 
     if (!validateForm()) return; // Prevent submission if validation fails
@@ -69,7 +70,6 @@ const SignUp: React.FC = () => {
         password: formData.password,
         name: formData.name,
       });
-      toast.success("Sign-Up Successful!");
       localStorage.setItem("signupSuccess", "true");
       navigate("/signin");
     } catch (err: any) {
